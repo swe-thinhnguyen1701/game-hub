@@ -16,10 +16,16 @@ export interface GameQuery {
     value: string;
     label: string;
   };
+  search: string;
 }
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({ genre: null, platform: { name: null, id: null }, sortOrder: { value: "", label: "Relevance" } });
+  const [gameQuery, setGameQuery] = useState<GameQuery>({
+    genre: null,
+    platform: { name: null, id: null },
+    sortOrder: { value: "", label: "Relevance" },
+    search: ""
+  });
 
   return (
     <Grid templateAreas={{
@@ -31,7 +37,7 @@ function App() {
         md: "200px 1fr"
       }}>
       <GridItem area="nav">
-        <NavBar />
+        <NavBar onSearch={(search) => setGameQuery({ ...gameQuery, search })} />
       </GridItem>
       <GridItem area="aside" hideBelow="md" paddingX={5}>
         <GenreList
