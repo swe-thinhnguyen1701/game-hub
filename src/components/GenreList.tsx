@@ -17,7 +17,6 @@ const GenreList = ({selectedGenre, onSelectedGenre}: Props) => {
     return (
         <List onClick={(e) => {
             const target = e.target as HTMLButtonElement;
-            console.log(target.id);
             if (!target.id) return;
             onSelectedGenre(target.id);
         }}>
