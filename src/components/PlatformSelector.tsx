@@ -24,7 +24,6 @@ const PlatformSelector = ({selectedPlatform, onSelectPlatform}: Props) => {
                     id: target.value,
                     name: target.innerText
                 }
-                console.log(platform);
                 
                 onSelectPlatform(platform);
             }}>
