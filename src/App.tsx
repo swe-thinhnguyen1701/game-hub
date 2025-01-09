@@ -7,7 +7,10 @@ import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 
 export interface GameQuery {
-  genre: string | null;
+  genre: {
+    id: string | null;
+    name: string | null;
+  },
   platform: {
     name: string | null;
     id: string | null;
@@ -21,7 +24,7 @@ export interface GameQuery {
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({
-    genre: null,
+    genre: {name: null, id: null},
     platform: { name: null, id: null },
     sortOrder: { value: "", label: "Relevance" },
     search: ""
@@ -42,7 +45,7 @@ function App() {
       <GridItem area="aside" hideBelow="md" paddingX={5}>
         <GenreList
           selectedGenre={gameQuery.genre}
-          onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })} />
+          onSelectedGenre={(genre: {name: string | null; id: string | null}) => setGameQuery({ ...gameQuery, genre })} />
       </GridItem>
       <GridItem area="main">
         <HStack spacing={5} marginLeft={2} marginBottom={5}>
