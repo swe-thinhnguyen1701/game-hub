@@ -28,7 +28,7 @@ const GenreList = ({ selectedGenre, onSelectedGenre }: Props) => {
                 if (!target.id) return;
                 onSelectedGenre({ id: target.id, name: target.textContent });
             }}>
-                {data.map((genre) => (
+                {data?.results.map((genre) => (
                     <ListItem key={genre.id} paddingY={2}>
                         <HStack>
                             <Image boxSize="32px" objectFit="cover" borderRadius={8} src={getCroppedImgUrl(genre.image_background)} />
